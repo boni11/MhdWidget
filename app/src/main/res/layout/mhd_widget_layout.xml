@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/widget_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/zastavka_1"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="Belehradska"
+            />
+
+        <TextView
+            android:id="@+id/medznik"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text=" - "
+            />
+
+        <TextView
+            android:id="@+id/zastavka_2"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="Palackeho"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <!--- dynamicky doplnit ikonu podla spoja neskor-->
+        <TextView
+            android:id="@+id/odchod_1_spoj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:paddingRight="15dp"
+            android:paddingLeft="1dp"
+            />
+        <TextView
+            android:id="@+id/odchod_1_dlzka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12min"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            />
+        <TextView
+            android:id="@+id/odchod_1_cas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:20"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/odchod_2_spoj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:paddingRight="15dp"
+            android:paddingLeft="1dp"
+            />
+        <TextView
+            android:id="@+id/odchod_2_dlzka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18min"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            />
+        <TextView
+            android:id="@+id/odchod_2_cas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:34"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:background="@xml/button_image"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>
