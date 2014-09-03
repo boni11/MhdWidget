@@ -30,9 +30,12 @@
                 android:resource="@xml/mhd_widget_info" />
         </receiver>
 
-        <activity
-            android:name=".MhdWidgetConfiguration"
-            android:label="@string/title_activity_mhd_widget_configuration" >
+        <activity android:name=".MhdWidgetConfiguration" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@layout/activity_mhd_widget_configuration" />
         </activity>
     </application>
 

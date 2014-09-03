@@ -6,8 +6,8 @@
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:previewImage="@drawable/ic_launcher"
-    android:initialLayout="@layout/mhd_widget_layout">
-    <!--- android:configure="com.example.widgetmhd.MhdWidgetConfiguration" -->
+    android:initialLayout="@layout/mhd_widget_layout"
+    android:configure="com.example.widgetmhd.MhdWidgetConfiguration">
 
 
 </appwidget-provider>
