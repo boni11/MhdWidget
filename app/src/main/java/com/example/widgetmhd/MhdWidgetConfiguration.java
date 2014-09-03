@@ -36,7 +36,7 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 //dostat zastavky zo spinerov
-                //ulozit do shared preferences
+                //ulozit do shared preferences - vykopiruj tiredu z Test projektu
 
                 //bud posli intent pre Receiver alebo len zavolaj fciu
 

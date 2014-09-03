@@ -38,14 +38,16 @@ public class MhdWidgetProvider extends AppWidgetProvider{
         super.onUpdate(context, appWidgetManager, appWidgetIds);
         Log.d("WIDGET","onUpadete");
 
+
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.mhd_widget_layout);
 
         // register for button event
-        Intent intent=new Intent();
-        intent.setAction("com.mhd.intent.action.UPDATE_WIDGET");
+        Intent intent=new Intent(context,getClass());
+        intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
 
 
-        PendingIntent pending=PendingIntent.getActivity(context,0,intent,0);
+        //PendingIntent pending=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pending=PendingIntent.getBroadcast(context,0,intent,0);
         remoteViews.setOnClickPendingIntent(R.id.refresh_button,pending);
 
         remoteViews.setTextViewText(R.id.zastavka_1,"onUpade");
@@ -60,6 +62,9 @@ public class MhdWidgetProvider extends AppWidgetProvider{
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        if (intent.getAction().equals("android.appwidget.action.APPWIDGET_UPDATEE")){
+            Log.d("WIDGET","onReceive - refresh button");
+        }
         Log.d("WIDGET","onReceive");
     }
 }
