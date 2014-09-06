@@ -6,4 +6,499 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+
+    <string-array name="zastavkyNazvy">
+        <item>Alejová, školy</item>
+        <item>Alpinka</item>
+        <item>Alvinczyho</item>
+        <item>Alžbetina, Rektorát UPJŠ</item>
+        <item>Amfiteáter</item>
+        <item>Andrašcíkova</item>
+        <item>Anicka</item>
+        <item>Astória</item>
+        <item>Atletická</item>
+        <item>Aténska</item>
+        <item>Autocamping</item>
+        <item>Bana Bankov</item>
+        <item>Belehradská</item>
+        <item>Berlínska</item>
+        <item>Bernolákova</item>
+        <item>Blšák</item>
+        <item>Bosákova</item>
+        <item>Botanická záhrada</item>
+        <item>Boženy Slancíkovej - Timravy</item>
+        <item>Bruselská</item>
+        <item>Budanova</item>
+        <item>Budapeštianska</item>
+        <item>Bukovecká</item>
+        <item>Bytový podnik mesta Košice</item>
+        <item>Cassovar</item>
+        <item>Centrálne prekladisko rúd</item>
+        <item>Chrastie</item>
+        <item>Cottbuská</item>
+        <item>CVC Domino</item>
+        <item>Cyklistická</item>
+        <item>Dargovských hrdinov, MiÚ</item>
+        <item>Danový úrad</item>
+        <item>Detský domov Satelit</item>
+        <item>Diamantová</item>
+        <item>Dneperská</item>
+        <item>Dolný Bankov</item>
+        <item>Dom umenia</item>
+        <item>Dopravná</item>
+        <item>DP mesta Košice</item>
+        <item>Drabova</item>
+        <item>Dénešova</item>
+        <item>Džungla</item>
+        <item>EcoPoint</item>
+        <item>Exnárova</item>
+        <item>EZ Elektrosystémy</item>
+        <item>Faurecia</item>
+        <item>Fábryho</item>
+        <item>Golianova</item>
+        <item>Grunt</item>
+        <item>Gymnázium Opatovská</item>
+        <item>Haburská</item>
+        <item>Hala Cassosport</item>
+        <item>Haniska, Unimo</item>
+        <item>Haniska, žel. st.</item>
+        <item>Hanojská</item>
+        <item>Havlíckova</item>
+        <item>Heckova</item>
+        <item>Heringeš</item>
+        <item>Hlavná pošta</item>
+        <item>Hodonínska</item>
+        <item>Holubyho</item>
+        <item>Horný Bankov</item>
+        <item>Hranicná</item>
+        <item>Hronská</item>
+        <item>Húskova</item>
+        <item>Idanská</item>
+        <item>Immopark</item>
+        <item>Jahodná, chata</item>
+        <item>Jahodná, horáren</item>
+        <item>Jahodná, kopec</item>
+        <item>Jakabov palác</item>
+        <item>Janigova</item>
+        <item>Južná trieda c. 125</item>
+        <item>Kalinovská</item>
+        <item>Kasárne, Kulturpark</item>
+        <item>Katastrálny úrad</item>
+        <item>Kavecany</item>
+        <item>Kavecany, cintorín</item>
+        <item>Kavecany, Miestny úrad</item>
+        <item>Kino Družba</item>
+        <item>Klimkovicova</item>
+        <item>Kokšov Bakša c. 2</item>
+        <item>Kokšov Bakša c. 215</item>
+        <item>Kokšov Bakša, kostol</item>
+        <item>Kolibár</item>
+        <item>Kovalská</item>
+        <item>Košická Nová Ves</item>
+        <item>Košická Nová Ves, cintorín</item>
+        <item>Krajský súd</item>
+        <item>Krajský úrad</item>
+        <item>Krematórium</item>
+        <item>Kremnická</item>
+        <item>Krupinská</item>
+        <item>Králicia</item>
+        <item>Krásna</item>
+        <item>KVP, kláštor</item>
+        <item>Kvetná</item>
+        <item>Lackova</item>
+        <item>Ladožská</item>
+        <item>Letecká</item>
+        <item>Letisko</item>
+        <item>Levocská</item>
+        <item>Lingov</item>
+        <item>Lorincík</item>
+        <item>Lorincík, Miestny úrad</item>
+        <item>Ludvíkov Dvor</item>
+        <item>Ludvíkov Dvor</item>
+        <item>Luník IX, rázcestie</item>
+        <item>Luník IX, sídlisko</item>
+        <item>Luník VIII</item>
+        <item>Cermel</item>
+        <item>Dumbierska</item>
+        <item>Madridská</item>
+        <item>Magistrát mesta Košice</item>
+        <item>Magnezitárska</item>
+        <item>Malá stanica</item>
+        <item>Maša</item>
+        <item>Mengusovská</item>
+        <item>Michalovská</item>
+        <item>Mier</item>
+        <item>Miestny úrad, KVP</item>
+        <item>Minská</item>
+        <item>Mliecna</item>
+        <item>Mlynská bašta</item>
+        <item>Moldavská, obchodné centrá</item>
+        <item>Moskovská</item>
+        <item>Motorest, Krásna</item>
+        <item>Monok</item>
+        <item>Myslava, kostol</item>
+        <item>Myslava, Pri škole</item>
+        <item>Myslavská 87</item>
+        <item>Májová</item>
+        <item>Napájadlá</item>
+        <item>Nemocnica Šaca</item>
+        <item>Nová nemocnica</item>
+        <item>Nám. Maratónu mieru</item>
+        <item>Nám. osloboditelov</item>
+        <item>Národné nám.</item>
+        <item>Obchodná akadémia</item>
+        <item>OC Cassovia</item>
+        <item>OC Optima</item>
+        <item>Ovsená</item>
+        <item>Palackého</item>
+        <item>Pasteurova</item>
+        <item>Pereš</item>
+        <item>Perešská</item>
+        <item>Pereš, vodojem</item>
+        <item>Plynáren Haniska</item>
+        <item>Pltová</item>
+        <item>Pod Furcou</item>
+        <item>Podhradová</item>
+        <item>Podjazdy Haniska</item>
+        <item>Podnikatelská</item>
+        <item>Polianska</item>
+        <item>Poliklinika KVP</item>
+        <item>Poliklinika Sever</item>
+        <item>Poliklinika Východ</item>
+        <item>Polov</item>
+        <item>Polovská</item>
+        <item>Polov, rázcestie</item>
+        <item>Polská</item>
+        <item>Postupimská</item>
+        <item>Považská, Nová nemocnica</item>
+        <item>Pošta 2</item>
+        <item>Prekladisko hotových výrobkov</item>
+        <item>Pri Hornáde</item>
+        <item>Pri hati</item>
+        <item>Pri Teleku</item>
+        <item>Priemyselná</item>
+        <item>Radnica Starého mesta</item>
+        <item>Rašelinové závody</item>
+        <item>Revúcka</item>
+        <item>Rovníková</item>
+        <item>Rušnové depo</item>
+        <item>Ružová, OC Galéria</item>
+        <item>Ryba</item>
+        <item>Secovská</item>
+        <item>Senný trh</item>
+        <item>Slovenská c. 20</item>
+        <item>Slovenská c. 42</item>
+        <item>Slovenský rozhlas</item>
+        <item>Sládkovicova</item>
+        <item>SOŠ automobilová</item>
+        <item>Socha Jána Pavla II.</item>
+        <item>Sofijská</item>
+        <item>Sokolovská</item>
+        <item>Spalovna</item>
+        <item>Spolocenský pavilón</item>
+        <item>Správa mestskej zelene</item>
+        <item>Stanicné nám.</item>
+        <item>Staroslovanská</item>
+        <item>Starozagorská</item>
+        <item>Stará nemocnica</item>
+        <item>Stavadlo 1</item>
+        <item>Stavadlo 2 U.S.Steel</item>
+        <item>Stodolova</item>
+        <item>Suchodolinská</item>
+        <item>Suchá dolina</item>
+        <item>Svornosti</item>
+        <item>Technická univerzita</item>
+        <item>Teplého</item>
+        <item>Tepláren</item>
+        <item>Tesco, Džungla</item>
+        <item>Tomášikova</item>
+        <item>Trebišovská</item>
+        <item>Triton</item>
+        <item>Ulica Sv. Ladislava</item>
+        <item>Ucnovská</item>
+        <item>V úvoze</item>
+        <item>Valcovne U. S. Steel</item>
+        <item>Valeo</item>
+        <item>Važecká</item>
+        <item>Verejný cintorín</item>
+        <item>Vinicná</item>
+        <item>Vitalina</item>
+        <item>Vo výmoli</item>
+        <item>Vodná</item>
+        <item>Vodárenská</item>
+        <item>Vrátnica 4 U.S.Steel</item>
+        <item>VSS, križovatka</item>
+        <item>Vstupný areál U. S. Steel</item>
+        <item>Vyhliadková veža</item>
+        <item>Vyšné Opátske</item>
+        <item>Vyšný dvor</item>
+        <item>Útulok pre zvieratá</item>
+        <item>Zelený dvor</item>
+        <item>Zimná</item>
+        <item>Zimný štadión</item>
+        <item>Zoo</item>
+        <item>Zupkova</item>
+        <item>ZŠ Bernolákova</item>
+        <item>Šaca, námestie</item>
+        <item>Šebastovce</item>
+        <item>Školy pre telesne postihnutých</item>
+        <item>Štrbská</item>
+        <item>Tahanovská</item>
+        <item>Železnicná nemocnica</item>
+        <item>Železnicná zastávka Valaliky</item>
+        <item>Železníky</item>
+        <item>Železníky, križovatka</item>
+        <item>Želiarska</item>
+        <item>Žel. zastávka Tahanovce</item>
+        <item>Žiacka</item>
+        <item>Žilinská</item>
+    </string-array>
+
+    <integer-array name="nazvyCisla">
+        <item>1541</item>
+        <item>4</item>
+        <item>11</item>
+        <item>1457</item>
+        <item>17</item>
+        <item>426</item>
+        <item>21</item>
+        <item>24</item>
+        <item>33</item>
+        <item>702</item>
+        <item>34</item>
+        <item>43</item>
+        <item>44</item>
+        <item>53</item>
+        <item>1010</item>
+        <item>1173</item>
+        <item>107</item>
+        <item>55</item>
+        <item>1562</item>
+        <item>572</item>
+        <item>1700</item>
+        <item>407</item>
+        <item>752</item>
+        <item>61</item>
+        <item>1763</item>
+        <item>110</item>
+        <item>317</item>
+        <item>647</item>
+        <item>116</item>
+        <item>120</item>
+        <item>577</item>
+        <item>675</item>
+        <item>551</item>
+        <item>140</item>
+        <item>146</item>
+        <item>151</item>
+        <item>155</item>
+        <item>1300</item>
+        <item>167</item>
+        <item>171</item>
+        <item>1730</item>
+        <item>131</item>
+        <item>2032</item>
+        <item>202</item>
+        <item>205</item>
+        <item>1765</item>
+        <item>212</item>
+        <item>217</item>
+        <item>221</item>
+        <item>227</item>
+        <item>231</item>
+        <item>237</item>
+        <item>2336</item>
+        <item>2311</item>
+        <item>240</item>
+        <item>1402</item>
+        <item>245</item>
+        <item>2024</item>
+        <item>250</item>
+        <item>264</item>
+        <item>1734</item>
+        <item>273</item>
+        <item>465</item>
+        <item>301</item>
+        <item>306</item>
+        <item>1102</item>
+        <item>2020</item>
+        <item>327</item>
+        <item>1740</item>
+        <item>333</item>
+        <item>334</item>
+        <item>340</item>
+        <item>1237</item>
+        <item>345</item>
+        <item>1262</item>
+        <item>1527</item>
+        <item>375</item>
+        <item>65</item>
+        <item>564</item>
+        <item>351</item>
+        <item>363</item>
+        <item>1667</item>
+        <item>1673</item>
+        <item>1676</item>
+        <item>366</item>
+        <item>102</item>
+        <item>671</item>
+        <item>73</item>
+        <item>434</item>
+        <item>442</item>
+        <item>447</item>
+        <item>451</item>
+        <item>454</item>
+        <item>1412</item>
+        <item>472</item>
+        <item>356</item>
+        <item>476</item>
+        <item>500</item>
+        <item>421</item>
+        <item>506</item>
+        <item>512</item>
+        <item>746</item>
+        <item>517</item>
+        <item>1037</item>
+        <item>613</item>
+        <item>522</item>
+        <item>3156</item>
+        <item>1202</item>
+        <item>1255</item>
+        <item>625</item>
+        <item>125</item>
+        <item>174</item>
+        <item>525</item>
+        <item>561</item>
+        <item>531</item>
+        <item>540</item>
+        <item>545</item>
+        <item>556</item>
+        <item>622</item>
+        <item>1006</item>
+        <item>601</item>
+        <item>2007</item>
+        <item>135</item>
+        <item>636</item>
+        <item>762</item>
+        <item>323</item>
+        <item>656</item>
+        <item>641</item>
+        <item>412</item>
+        <item>1554</item>
+        <item>663</item>
+        <item>534</item>
+        <item>311</item>
+        <item>724</item>
+        <item>1135</item>
+        <item>666</item>
+        <item>707</item>
+        <item>717</item>
+        <item>736</item>
+        <item>1725</item>
+        <item>766</item>
+        <item>1046</item>
+        <item>1050</item>
+        <item>1056</item>
+        <item>1031</item>
+        <item>1123</item>
+        <item>1516</item>
+        <item>1074</item>
+        <item>1072</item>
+        <item>1107</item>
+        <item>1603</item>
+        <item>1113</item>
+        <item>1117</item>
+        <item>1127</item>
+        <item>1142</item>
+        <item>1146</item>
+        <item>1132</item>
+        <item>1042</item>
+        <item>617</item>
+        <item>1211</item>
+        <item>1151</item>
+        <item>756</item>
+        <item>722</item>
+        <item>1157</item>
+        <item>1062</item>
+        <item>650</item>
+        <item>1166</item>
+        <item>2002</item>
+        <item>1441</item>
+        <item>1346</item>
+        <item>1175</item>
+        <item>605</item>
+        <item>1222</item>
+        <item>1227</item>
+        <item>1232</item>
+        <item>275</item>
+        <item>1240</item>
+        <item>1247</item>
+        <item>1065</item>
+        <item>1277</item>
+        <item>1271</item>
+        <item>1265</item>
+        <item>1323</item>
+        <item>1253</item>
+        <item>1306</item>
+        <item>1313</item>
+        <item>1332</item>
+        <item>1337</item>
+        <item>1660</item>
+        <item>1626</item>
+        <item>1774</item>
+        <item>1351</item>
+        <item>1343</item>
+        <item>2330</item>
+        <item>1356</item>
+        <item>1362</item>
+        <item>1372</item>
+        <item>1367</item>
+        <item>1376</item>
+        <item>1425</item>
+        <item>1437</item>
+        <item>1431</item>
+        <item>256</item>
+        <item>1000</item>
+        <item>1447</item>
+        <item>1450</item>
+        <item>463</item>
+        <item>1324</item>
+        <item>1461</item>
+        <item>1467</item>
+        <item>1720</item>
+        <item>774</item>
+        <item>76</item>
+        <item>1473</item>
+        <item>1474</item>
+        <item>1502</item>
+        <item>1512</item>
+        <item>1506</item>
+        <item>1521</item>
+        <item>1530</item>
+        <item>1535</item>
+        <item>1545</item>
+        <item>417</item>
+        <item>1772</item>
+        <item>1754</item>
+        <item>1564</item>
+        <item>1573</item>
+        <item>1576</item>
+        <item>1607</item>
+        <item>773</item>
+        <item>3163</item>
+        <item>712</item>
+        <item>1650</item>
+        <item>161</item>
+        <item>1420</item>
+        <item>403</item>
+        <item>1623</item>
+        <item>1617</item>
+        <item>1636</item>
+        <item>741</item>
+        <item>1552</item>
+        <item>1612</item>
+        <item>432</item>
+        <item>1640</item>
+    </integer-array>
+
 </resources>

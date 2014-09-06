@@ -2,8 +2,9 @@ package com.example.widgetmhd;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,10 @@ import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Spinner;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -44,7 +48,46 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 //dostat zastavky zo spinerov
-                //ulozit do shared preferences - vykopiruj tiredu z Test projektu
+                //ulozit do shared preferences
+
+                String[] nazvyZastavok = getResources().getStringArray(R.array.zastavkyNazvy);
+                int[] cislaZastavok = getResources().getIntArray(R.array.nazvyCisla);
+
+                HashMap<String, Integer> myMap = new HashMap<String, Integer>();
+                for (int i = 0; i < nazvyZastavok.length; i++) {
+                    myMap.put(nazvyZastavok[i], cislaZastavok[i]);
+                }
+
+                String link="http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
+
+                try {
+                    String odkial = "spojenieodkial="+ URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8")+"&";
+                    String odkialZastavka="z1k=z"+ myMap.get(String.valueOf(sOdkial.getSelectedItem())) +"&";
+                    String kam="spojeniekam="+URLEncoder.encode( String.valueOf(sKam.getSelectedItem()) ,"utf-8")+"&";
+                    String kamZastavka="z2k=z"+myMap.get(String.valueOf(sKam.getSelectedItem()));
+                    link=link+odkial+odkialZastavka+kam+kamZastavka;
+
+                } catch (UnsupportedEncodingException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                /**
+                TextView zastavka1=(TextVie w) findViewById(R.id.zastavka_1);
+                zastavka1.setText(String.valueOf(sOdkial.getSelectedItem()));
+
+                TextView zastavka2=(TextView) findViewById(R.id.zastavka_2);
+                zastavka2.setText(String.valueOf(sKam.getSelectedItem()));
+                */
+
+                Log.d("LINK",link);
+
+                MySharedPreferences.initSharedPreferences(getSharedPreferences("mhd_prefs", MODE_PRIVATE), getApplicationContext());
+                MySharedPreferences.setPreferences("link",link);
+                MySharedPreferences.setPreferences("zastavka1",String.valueOf(sOdkial.getSelectedItem()));
+                MySharedPreferences.setPreferences("zastavka2",String.valueOf(sKam.getSelectedItem()));
+
+
 
                 //bud posli intent pre Receiver alebo len zavolaj fciu
 

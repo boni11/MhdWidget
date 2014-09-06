@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.widgetmhd" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -12,19 +13,6 @@
         <receiver android:name=".MhdWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/mhd_widget_info" />
-        </receiver>
-
-
-        <receiver
-            android:name=".MhdWidgetIntentReceiver"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.mhd.intent.action.UPDATE_WIDGET" />
             </intent-filter>
 
             <meta-data
