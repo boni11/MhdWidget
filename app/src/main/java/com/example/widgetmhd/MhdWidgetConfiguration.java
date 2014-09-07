@@ -18,6 +18,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 public class MhdWidgetConfiguration extends ActionBarActivity {
@@ -83,8 +84,12 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 Log.d("LINK",link);
 
 
+                Random rand = new Random();
+                int  n = rand.nextInt(500) + 1;
+                String randomNumber=Integer.toString(n);
+                String prefsName="mhd_prefs"+widgetId;
 
-                MySharedPreferences.initSharedPreferences(getSharedPreferences("mhd_prefs", MODE_PRIVATE), getApplicationContext());
+                MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
                 MySharedPreferences.setPreferences("link",link);
                 MySharedPreferences.setPreferences("zastavka1",String.valueOf(sOdkial.getSelectedItem()));
                 MySharedPreferences.setPreferences("zastavka2",String.valueOf(sKam.getSelectedItem()));
@@ -104,6 +109,7 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 //bud posli intent pre Receiver alebo len zavolaj fciu
                 Intent intent = new Intent();
                 intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
+                intent.putExtra("WIDGET_ID_MOJE",(int)widgetId);
                 sendBroadcast(intent);
 
                 Intent resultValue=new Intent();

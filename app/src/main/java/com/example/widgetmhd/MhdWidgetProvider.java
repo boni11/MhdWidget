@@ -20,6 +20,8 @@ public class MhdWidgetProvider extends AppWidgetProvider{
     static String spoje;
     static Context thisContext;
 
+    static int widgetIdd=0;
+
 
     @Override
     public void onDisabled(Context context) {
@@ -42,14 +44,16 @@ public class MhdWidgetProvider extends AppWidgetProvider{
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
-        Log.d("WIDGET","onUpadete");
+        //Log.d("WIDGET","onUpadete");
+        //Log.d("WIDGETOnUpadate",Integer.toString(appWidgetIds[0]));
 
-
+        widgetIdd=appWidgetIds[0];
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.mhd_widget_layout);
 
         // register for button event
         Intent intent=new Intent(context,getClass());
         intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
+        intent.putExtra("WIDGET_ID_MOJE",(int)this.widgetIdd);
 
 
         //PendingIntent pending=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -83,9 +87,13 @@ public class MhdWidgetProvider extends AppWidgetProvider{
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         if (intent.getAction().equals("android.appwidget.action.APPWIDGET_UPDATEE")){
-            Log.d("WIDGET","onReceive - refresh button");
-            new GetImhdSpoje(context).execute();
-//            pushWidgetUpdate(context);
+            Log.d("INTENT ON RECEIVE",Integer.toString(intent.getIntExtra("WIDGET_ID_MOJE",0)));
+//            Log.d("INTENT ON RECEIVE",Integer.toString(widgetIdd));
+
+            if (intent.getIntExtra("WIDGET_ID_MOJE",0) == this.widgetIdd) {
+                new GetImhdSpoje(context).execute();
+            }
+
         }
         //Log.d("WIDGET","onReceive");
     }
