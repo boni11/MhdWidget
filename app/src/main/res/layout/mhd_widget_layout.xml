@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:text="Belehradska"
+            android:text=""
             />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:text="Palackeho"
+            android:text=""
             />
     </LinearLayout>
 
@@ -44,7 +44,7 @@
 
         <!--- dynamicky doplnit ikonu podla spoja neskor-->
         <TextView
-            android:id="@+id/odchod_1_spoj"
+            android:id="@+id/line1_odchod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6"
@@ -52,7 +52,7 @@
             android:paddingLeft="1dp"
             />
         <TextView
-            android:id="@+id/odchod_1_dlzka"
+            android:id="@+id/line1_prichod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12min"
@@ -60,7 +60,15 @@
             android:paddingLeft="15dp"
             />
         <TextView
-            android:id="@+id/odchod_1_cas"
+            android:id="@+id/line1_dlzka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:20"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+        <TextView
+            android:id="@+id/line1_spojenie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="17:20"
@@ -76,26 +84,74 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/odchod_2_spoj"
+            android:id="@+id/line2_odchod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="9"
+            android:text="6"
             android:paddingRight="15dp"
             android:paddingLeft="1dp"
             />
         <TextView
-            android:id="@+id/odchod_2_dlzka"
+            android:id="@+id/line2_prichod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="18min"
+            android:text="12min"
             android:paddingRight="15dp"
             android:paddingLeft="15dp"
             />
         <TextView
-            android:id="@+id/odchod_2_cas"
+            android:id="@+id/line2_dlzka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:34"
+            android:text="17:20"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+        <TextView
+            android:id="@+id/line2_spojenie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:20"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/line3_odchod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:paddingRight="15dp"
+            android:paddingLeft="1dp"
+            />
+        <TextView
+            android:id="@+id/line3_prichod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12min"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            />
+        <TextView
+            android:id="@+id/line3_dlzka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:20"
+            android:paddingLeft="15dp"
+            android:paddingRight="1dp"
+            />
+        <TextView
+            android:id="@+id/line3_spojenie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:20"
             android:paddingLeft="15dp"
             android:paddingRight="1dp"
             />

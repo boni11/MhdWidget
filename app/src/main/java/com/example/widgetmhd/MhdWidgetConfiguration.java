@@ -82,14 +82,29 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
 
                 Log.d("LINK",link);
 
+
+
                 MySharedPreferences.initSharedPreferences(getSharedPreferences("mhd_prefs", MODE_PRIVATE), getApplicationContext());
                 MySharedPreferences.setPreferences("link",link);
                 MySharedPreferences.setPreferences("zastavka1",String.valueOf(sOdkial.getSelectedItem()));
                 MySharedPreferences.setPreferences("zastavka2",String.valueOf(sKam.getSelectedItem()));
 
+                /**
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MhdWidgetProvider.parseImhd();
+                    }
+                });
+                */
+
+
 
 
                 //bud posli intent pre Receiver alebo len zavolaj fciu
+                Intent intent = new Intent();
+                intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
+                sendBroadcast(intent);
 
                 Intent resultValue=new Intent();
                 resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,widgetId);
