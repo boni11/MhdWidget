@@ -18,7 +18,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 
 public class MhdWidgetConfiguration extends ActionBarActivity {
@@ -84,10 +83,9 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 Log.d("LINK",link);
 
 
-                Random rand = new Random();
-                int  n = rand.nextInt(500) + 1;
-                String randomNumber=Integer.toString(n);
-                String prefsName="mhd_prefs"+widgetId;
+                String prefsName="mhd_prefs_"+String.valueOf(widgetId);
+
+
 
                 MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
                 MySharedPreferences.setPreferences("link",link);

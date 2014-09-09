@@ -21,10 +21,13 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
 
     RemoteViews remoteViews;
     Context cnt;
+    String prefsName;
 
-    public GetImhdSpoje(Context context){
+    public GetImhdSpoje(Context context,String prefs){
 
         cnt=context;
+        prefsName=prefs;
+
     }
 
     @Override
@@ -36,6 +39,8 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
 
     protected void onPostExecute(Long result){
         Log.d("WIDGET","onPostExecute");
+        MySharedPreferences.initSharedPreferences(cnt.getSharedPreferences(prefsName, 0));
+
         RemoteViews remoteViews = new RemoteViews(cnt.getPackageName(), R.layout.mhd_widget_layout);
 
         remoteViews.setTextViewText(R.id.zastavka_1, MySharedPreferences.getPreferences("zastavka1") );
@@ -62,7 +67,7 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
 
     }
 
-    public static void parseImhd() {
+    public void parseImhd() {
 
         final String url=MySharedPreferences.getPreferences("link");
         String odchod,odchod2,odchod3;
@@ -126,6 +131,7 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
                     prichod3=splited32[splited32.length-1];
 
 
+                    MySharedPreferences.initSharedPreferences(cnt.getSharedPreferences(prefsName, 0));
                     MySharedPreferences.setPreferences("line1_odchod",odchod.toString());
                     MySharedPreferences.setPreferences("line1_prichod", prichod.toString());
                     MySharedPreferences.setPreferences("line1_dlzkaCesty", dlzkaCesty.toString());

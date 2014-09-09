@@ -18,6 +18,11 @@ public class MySharedPreferences {
         mContext=iContext;
     }
 
+    static void initSharedPreferences(SharedPreferences iPrefs){
+        prefs=iPrefs;
+        edit=prefs.edit();
+    }
+
     static void setPreferences(String key,String value){
         edit.putString(key,value);
         edit.commit();
