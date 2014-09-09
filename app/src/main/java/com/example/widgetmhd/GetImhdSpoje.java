@@ -22,12 +22,13 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
     RemoteViews remoteViews;
     Context cnt;
     String prefsName;
+    int widgetId;
 
-    public GetImhdSpoje(Context context,String prefs){
+    public GetImhdSpoje(Context context,String prefs, int widgetID){
 
         cnt=context;
         prefsName=prefs;
-
+        widgetId=widgetID;
     }
 
     @Override
@@ -63,7 +64,8 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
 
         ComponentName myWidget = new ComponentName(cnt, MhdWidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(cnt);
-        manager.updateAppWidget(myWidget, remoteViews);
+//        manager.updateAppWidget(myWidget, remoteViews);
+        manager.updateAppWidget(widgetId, remoteViews);
 
     }
 

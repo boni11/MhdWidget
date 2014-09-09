@@ -57,7 +57,7 @@ public class MhdWidgetProvider extends AppWidgetProvider{
 
 
         //PendingIntent pending=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent pending=PendingIntent.getBroadcast(context,0,intent,0);
+        PendingIntent pending=PendingIntent.getBroadcast(context,widgetIdd,intent,0);
         remoteViews.setOnClickPendingIntent(R.id.refresh_button,pending);
 
 //
@@ -78,7 +78,10 @@ public class MhdWidgetProvider extends AppWidgetProvider{
 
         ComponentName myWidget = new ComponentName(context, MhdWidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(context);
-        manager.updateAppWidget(myWidget, remoteViews);
+//        manager.updateAppWidget(myWidget, remoteViews);
+        manager.updateAppWidget(widgetIdd, remoteViews);
+
+
 
 
     }
@@ -98,7 +101,7 @@ public class MhdWidgetProvider extends AppWidgetProvider{
 
 
 
-            new GetImhdSpoje(context,prefsName).execute();
+            new GetImhdSpoje(context,prefsName,widgetIddd).execute();
 
 //            if (intent.getIntExtra("WIDGET_ID_MOJE",0) == this.widgetIdd) {
 //                new GetImhdSpoje(context).execute();
