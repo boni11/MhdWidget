@@ -39,6 +39,7 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
 
         AppWidgetManager widgetManager=AppWidgetManager.getInstance(this);
         RemoteViews views=new RemoteViews(this.getPackageName(),R.layout.mhd_widget_layout);
+        //NAKONFIGUROVAT AJ MNOZSTVO RIADOV CIZE NOVE WIDGET LAYOUTY
 
         //zavolat fciu nech nastavy spinery
         addItemsToSpinnerOdial();

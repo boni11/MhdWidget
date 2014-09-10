@@ -14,66 +14,59 @@
         <TextView
             android:id="@+id/zastavka_1"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text=""
             />
 
         <TextView
             android:id="@+id/medznik"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text=" - "
             />
 
         <TextView
             android:id="@+id/zastavka_2"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text=""
             />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="left">
 
-        <!--- dynamicky doplnit ikonu podla spoja neskor-->
         <TextView
             android:id="@+id/line1_odchod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6"
-            android:paddingRight="15dp"
-            android:paddingLeft="1dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line1_prichod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12min"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line1_dlzka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line1_spojenie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
 
@@ -81,39 +74,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="left">
 
         <TextView
             android:id="@+id/line2_odchod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6"
-            android:paddingRight="15dp"
-            android:paddingLeft="1dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line2_prichod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12min"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line2_dlzka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line2_spojenie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
 
@@ -121,42 +107,166 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="left">
 
         <TextView
             android:id="@+id/line3_odchod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6"
-            android:paddingRight="15dp"
-            android:paddingLeft="1dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line3_prichod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12min"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line3_dlzka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:id="@+id/line3_spojenie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17:20"
-            android:paddingLeft="15dp"
-            android:paddingRight="1dp"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
 
+
+
+    <!--
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp" >
+
+            <TextView
+                android:id="@+id/line1_odchod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="6"
+                android:paddingRight="15dp"
+                android:paddingLeft="1dp"
+                />
+            <TextView
+                android:id="@+id/line1_prichod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12min"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                />
+            <TextView
+                android:id="@+id/line1_dlzka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+            <TextView
+                android:id="@+id/line1_spojenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp" >
+
+            <TextView
+                android:id="@+id/line2_odchod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="6"
+                android:paddingRight="15dp"
+                android:paddingLeft="1dp"
+                />
+            <TextView
+                android:id="@+id/line2_prichod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12min"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                />
+            <TextView
+                android:id="@+id/line2_dlzka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+            <TextView
+                android:id="@+id/line2_spojenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp">
+            <TextView
+                android:id="@+id/line3_odchod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="6"
+                android:paddingRight="15dp"
+                android:paddingLeft="1dp"
+                />
+            <TextView
+                android:id="@+id/line3_prichod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12min"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                />
+            <TextView
+                android:id="@+id/line3_dlzka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+            <TextView
+                android:id="@+id/line3_spojenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:20"
+                android:paddingLeft="15dp"
+                android:paddingRight="1dp"
+                />
+        </TableRow>
+
+    </TableLayout>
+    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -171,7 +281,6 @@
             android:background="@xml/button_image"
             />
     </LinearLayout>
-
 
 
 </LinearLayout>
