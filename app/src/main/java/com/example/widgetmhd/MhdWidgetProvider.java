@@ -92,23 +92,16 @@ public class MhdWidgetProvider extends AppWidgetProvider{
 
         super.onReceive(context, intent);
         if (intent.getAction().equals("android.appwidget.action.APPWIDGET_UPDATEE")){
-            Log.d("INTENT ON RECEIVE",Integer.toString(intent.getIntExtra("WIDGET_ID_MOJE",0)));
-//            Log.d("INTENT ON RECEIVE",Integer.toString(widgetIdd));
+            Log.d("WIDGET - INTENT ON RECEIVE",Integer.toString(intent.getIntExtra("WIDGET_ID_MOJE",0)));
+
             widgetIddd=intent.getIntExtra("WIDGET_ID_MOJE",0);
             String prefsName="mhd_prefs_"+String.valueOf(widgetIddd);
-
-//            MySharedPreferences.initSharedPreferences(context.getSharedPreferences(prefsName, 0));
-
+            //Log.d("WIDGET - PREFS NAME GET SPOJE",prefsName);
 
 
             new GetImhdSpoje(context,prefsName,widgetIddd).execute();
-
-//            if (intent.getIntExtra("WIDGET_ID_MOJE",0) == this.widgetIdd) {
-//                new GetImhdSpoje(context).execute();
-//            }
-
         }
-        //Log.d("WIDGET","onReceive");
+
     }
 
 
