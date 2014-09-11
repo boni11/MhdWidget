@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import org.jsoup.Jsoup;
@@ -51,19 +50,19 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
         remoteViews.setTextViewText(R.id.line1_odchod, MySharedPreferences.getPreferences("line1_odchod") );
         remoteViews.setTextViewText(R.id.line1_prichod, MySharedPreferences.getPreferences("line1_prichod") );
         remoteViews.setTextViewText(R.id.line1_dlzka, MySharedPreferences.getPreferences("line1_dlzkaCesty") );
-        setBackgroundOfLink(remoteViews,R.id.line1_dlzka,MySharedPreferences.getPreferences("line1_spoje"));
+        setBackgroundOfLink(remoteViews,R.id.line1_spojenie,MySharedPreferences.getPreferences("line1_spoje"));
         //remoteViews.setTextViewText(R.id.line1_spojenie, MySharedPreferences.getPreferences("line1_spoje") );
 
         remoteViews.setTextViewText(R.id.line2_odchod, MySharedPreferences.getPreferences("line2_odchod") );
         remoteViews.setTextViewText(R.id.line2_prichod, MySharedPreferences.getPreferences("line2_prichod") );
         remoteViews.setTextViewText(R.id.line2_dlzka, MySharedPreferences.getPreferences("line2_dlzkaCesty") );
-        setBackgroundOfLink(remoteViews,R.id.line2_dlzka,MySharedPreferences.getPreferences("line2_spoje"));
+        setBackgroundOfLink(remoteViews,R.id.line2_spojenie,MySharedPreferences.getPreferences("line2_spoje"));
         //remoteViews.setTextViewText(R.id.line2_spojenie, MySharedPreferences.getPreferences("line2_spoje") );
 
         remoteViews.setTextViewText(R.id.line3_odchod, MySharedPreferences.getPreferences("line3_odchod") );
         remoteViews.setTextViewText(R.id.line3_prichod, MySharedPreferences.getPreferences("line3_prichod") );
         remoteViews.setTextViewText(R.id.line3_dlzka, MySharedPreferences.getPreferences("line3_dlzkaCesty") );
-        setBackgroundOfLink(remoteViews,R.id.line3_dlzka,MySharedPreferences.getPreferences("line3_spoje"));
+        setBackgroundOfLink(remoteViews,R.id.line3_spojenie,MySharedPreferences.getPreferences("line3_spoje"));
         //remoteViews.setTextViewText(R.id.line3_spojenie, MySharedPreferences.getPreferences("line3_spoje") );
 
         ComponentName myWidget = new ComponentName(cnt, MhdWidgetProvider.class);
@@ -73,15 +72,65 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
 
     }
 
+
+    private enum Spojee{
+        R1,NIE
+    }
+
     public void setBackgroundOfLink(RemoteViews rv, int viewId, String spoje){
         String[] splited=spoje.split("\\s+");
 
-        rv.setTextViewText(viewId, spoje);
 
+        if (splited.length == 1){
+            switch (spoje){
 
-        //podla spoja rozdelen
-        rv.setInt(viewId,"setBackgroundResource",R.drawable.a10);
-        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                case "3": rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "4": rv.setInt(viewId,"setBackgroundResource",R.drawable.e4);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "5": rv.setInt(viewId,"setBackgroundResource",R.drawable.e5);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "6": rv.setInt(viewId,"setBackgroundResource",R.drawable.e6);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "9": rv.setInt(viewId,"setBackgroundResource",R.drawable.e9);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "R1": rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                case "10":rv.setInt(viewId,"setBackgroundResource",R.drawable.a10);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                default://rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+            }
+        }else{
+            //rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+            rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+            rv.setTextViewText(viewId, spoje);
+
+        }
+
     }
 
     public void parseImhd() {
@@ -145,7 +194,7 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
             MySharedPreferences.setPreferences("line1_dlzkaCesty", dlzkaCesty.toString());
             MySharedPreferences.setPreferences("line1_spoje", spoje.toString());
 
-            MySharedPreferences.setPreferences("line2_odchod",odchod2.toString());
+            MySharedPreferences.setPreferences("line2_odchod", odchod2.toString());
             MySharedPreferences.setPreferences("line2_prichod", prichod2.toString());
             MySharedPreferences.setPreferences("line2_dlzkaCesty", dlzkaCesty2.toString());
             MySharedPreferences.setPreferences("line2_spoje", spoje2.toString());
