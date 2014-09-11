@@ -73,56 +73,338 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
     }
 
 
-    private enum Spojee{
-        R1,NIE
+    private enum Spoje{
+        R1,R2,R3,R4,R5,R6,R7,R8, RA1,RA2,RA3,RA4,RA5,RA6,RA7,RA8, X7, N1,N2,N3,N71
+        //12T,20L,26P,
+    }
+
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void setBackgroundOfLink(RemoteViews rv, int viewId, String spoje){
         String[] splited=spoje.split("\\s+");
 
-
+        //doplnit pre viac spojov
+        //v configuracom spravit hladanie so scrollom mozno
         if (splited.length == 1){
-            switch (spoje){
 
-                case "3": rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+            if (splited[0].equals("12T")){
+                rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                rv.setTextColor(viewId, Color.parseColor("#000000"));
+                rv.setTextViewText(viewId, spoje);
+            }else if (splited[0].equals("20L")){
+                rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                rv.setTextViewText(viewId, spoje);
+            }else if (splited[0].equals("26P")){
+                rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                rv.setTextColor(viewId, Color.parseColor("#000000"));
+                rv.setTextViewText(viewId, spoje);
+            }
+
+            if (isNumeric(splited[0])) {
+                switch (Integer.parseInt(splited[0])) {
+
+                    case 3:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e3);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "4": rv.setInt(viewId,"setBackgroundResource",R.drawable.e4);
+                    case 4:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e4);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "5": rv.setInt(viewId,"setBackgroundResource",R.drawable.e5);
+                    case 5:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e5);
                         rv.setTextColor(viewId, Color.parseColor("#000000"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "6": rv.setInt(viewId,"setBackgroundResource",R.drawable.e6);
+                    case 6:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e6);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "9": rv.setInt(viewId,"setBackgroundResource",R.drawable.e9);
+                    case 9:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e9);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "R1": rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+                    case 10:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a10);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                case "10":rv.setInt(viewId,"setBackgroundResource",R.drawable.a10);
+                    case 15:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a15);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 16:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a16);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
 
-                default://rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+                    case 19:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a19);
                         rv.setTextColor(viewId, Color.parseColor("#ffffff"));
                         rv.setTextViewText(viewId, spoje);
                         break;
+
+                    case 23:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a23);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 27:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a27);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 34:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a34);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 36:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a36);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 71:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.t71);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 72:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.t72);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    //POSILOVE SPOJE
+                    case 18:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 20:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 28:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 30:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 51:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 54:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 55:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 56:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 57:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_posilove);
+                        rv.setTextColor(viewId, Color.parseColor("#000000"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+
+
+
+
+                    //DOPLNKOVE SPOJE
+                    case 11:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 12:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 13:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 14:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 17:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 21:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 22:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 24:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 25:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 26:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 29:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 31:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 33:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                    case 52:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.a_doplnkove);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+
+//                    default://rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
+//                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+//                        rv.setTextViewText(viewId, spoje);
+//                        break;
+                }
+            }else{
+                Spoje spojIny = Spoje.valueOf(splited[0]);
+                switch (spojIny){
+                    case R1:
+                    case R2:
+                    case R3:
+                    case R4:
+                    case R5:
+                    case R6:
+                    case R7:
+                    case R8:
+                    case RA1:
+                    case RA2:
+                    case RA3:
+                    case RA4:
+                    case RA5:
+                    case RA6:
+                    case RA7:
+                    case RA8:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.e_r);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+                    case X7:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.nahradna_doprava_x);
+                        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+                    case N1:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.an1);
+                        rv.setTextColor(viewId, Color.parseColor("#f3f60f"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+                    case N2:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.an2);
+                        rv.setTextColor(viewId, Color.parseColor("#fbb6c5"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+                    case N3:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.an3);
+                        rv.setTextColor(viewId, Color.parseColor("#c6d640"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+                    case N71:
+                        rv.setInt(viewId, "setBackgroundResource", R.drawable.an71);
+                        rv.setTextColor(viewId, Color.parseColor("#a9dce5"));
+                        rv.setTextViewText(viewId, spoje);
+                        break;
+
+                }
             }
         }else{
             //rv.setInt(viewId,"setBackgroundResource",R.drawable.e3);
