@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -50,23 +51,37 @@ public class GetImhdSpoje extends AsyncTask<String, Intent, Long> {
         remoteViews.setTextViewText(R.id.line1_odchod, MySharedPreferences.getPreferences("line1_odchod") );
         remoteViews.setTextViewText(R.id.line1_prichod, MySharedPreferences.getPreferences("line1_prichod") );
         remoteViews.setTextViewText(R.id.line1_dlzka, MySharedPreferences.getPreferences("line1_dlzkaCesty") );
-        remoteViews.setTextViewText(R.id.line1_spojenie, MySharedPreferences.getPreferences("line1_spoje") );
+        setBackgroundOfLink(remoteViews,R.id.line1_dlzka,MySharedPreferences.getPreferences("line1_spoje"));
+        //remoteViews.setTextViewText(R.id.line1_spojenie, MySharedPreferences.getPreferences("line1_spoje") );
 
         remoteViews.setTextViewText(R.id.line2_odchod, MySharedPreferences.getPreferences("line2_odchod") );
         remoteViews.setTextViewText(R.id.line2_prichod, MySharedPreferences.getPreferences("line2_prichod") );
         remoteViews.setTextViewText(R.id.line2_dlzka, MySharedPreferences.getPreferences("line2_dlzkaCesty") );
-        remoteViews.setTextViewText(R.id.line2_spojenie, MySharedPreferences.getPreferences("line2_spoje") );
+        setBackgroundOfLink(remoteViews,R.id.line2_dlzka,MySharedPreferences.getPreferences("line2_spoje"));
+        //remoteViews.setTextViewText(R.id.line2_spojenie, MySharedPreferences.getPreferences("line2_spoje") );
 
         remoteViews.setTextViewText(R.id.line3_odchod, MySharedPreferences.getPreferences("line3_odchod") );
         remoteViews.setTextViewText(R.id.line3_prichod, MySharedPreferences.getPreferences("line3_prichod") );
         remoteViews.setTextViewText(R.id.line3_dlzka, MySharedPreferences.getPreferences("line3_dlzkaCesty") );
-        remoteViews.setTextViewText(R.id.line3_spojenie, MySharedPreferences.getPreferences("line3_spoje") );
+        setBackgroundOfLink(remoteViews,R.id.line3_dlzka,MySharedPreferences.getPreferences("line3_spoje"));
+        //remoteViews.setTextViewText(R.id.line3_spojenie, MySharedPreferences.getPreferences("line3_spoje") );
 
         ComponentName myWidget = new ComponentName(cnt, MhdWidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(cnt);
 //        manager.updateAppWidget(myWidget, remoteViews);
         manager.updateAppWidget(widgetId, remoteViews);
 
+    }
+
+    public void setBackgroundOfLink(RemoteViews rv, int viewId, String spoje){
+        String[] splited=spoje.split("\\s+");
+
+        rv.setTextViewText(viewId, spoje);
+
+
+        //podla spoja rozdelen
+        rv.setInt(viewId,"setBackgroundResource",R.drawable.a10);
+        rv.setTextColor(viewId, Color.parseColor("#ffffff"));
     }
 
     public void parseImhd() {

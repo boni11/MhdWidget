@@ -26,6 +26,9 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
     private Spinner sOdkial;
     private Spinner sKam;
 
+    String odkial;
+    String kam;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,15 +65,25 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 String link="http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
 
                 try {
-                    String odkial = "spojenieodkial="+ URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8")+"&";
+                    odkial = "spojenieodkial="+ URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8")+"&";
                     String odkialZastavka="z1k=z"+ myMap.get(String.valueOf(sOdkial.getSelectedItem())) +"&";
-                    String kam="spojeniekam="+URLEncoder.encode( String.valueOf(sKam.getSelectedItem()) ,"utf-8")+"&";
+                    kam="spojeniekam="+URLEncoder.encode( String.valueOf(sKam.getSelectedItem()) ,"utf-8")+"&";
                     String kamZastavka="z2k=z"+myMap.get(String.valueOf(sKam.getSelectedItem()));
                     link=link+odkial+odkialZastavka+kam+kamZastavka;
 
                 } catch (UnsupportedEncodingException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                }
+
+
+                if (URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem())).equals(URLEncoder.encode( String.valueOf(sKam.getSelectedItem())))){
+                    Log.d("neeeegeeer",odkial);
+
+                    Intent resultValue=new Intent();
+                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,widgetId);
+                    setResult(RESULT_CANCELED,resultValue);
+                    finish();
                 }
 
                 /**
