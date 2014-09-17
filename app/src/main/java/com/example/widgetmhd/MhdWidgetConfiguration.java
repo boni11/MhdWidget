@@ -17,12 +17,15 @@ import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class MhdWidgetConfiguration extends ActionBarActivity {
@@ -76,84 +79,90 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 //dostat zastavky zo spinerov
                 //ulozit do shared preferences
 
-                if (isInternet) {
-                    String[] nazvyZastavok = getResources().getStringArray(R.array.zastavkyNazvy);
-                    int[] cislaZastavok = getResources().getIntArray(R.array.nazvyCisla);
+                if ( String.valueOf(sOdkial.getSelectedItem()).equals(String.valueOf(sKam.getSelectedItem())) ){
+                    Toast.makeText(getApplicationContext(),"Zastávky sa nesmú zhodovať!", LENGTH_SHORT).show();
 
-                    HashMap<String, Integer> myMap = new HashMap<String, Integer>();
-                    for (int i = 0; i < nazvyZastavok.length; i++) {
-                        myMap.put(nazvyZastavok[i], cislaZastavok[i]);
-                    }
+                }else {
 
-                    String link = "http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
+                    if (isInternet) {
+                        String[] nazvyZastavok = getResources().getStringArray(R.array.zastavkyNazvy);
+                        int[] cislaZastavok = getResources().getIntArray(R.array.nazvyCisla);
 
-                    try {
-                        odkial = "spojenieodkial=" + URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8") + "&";
-                        String odkialZastavka = "z1k=z" + myMap.get(String.valueOf(sOdkial.getSelectedItem())) + "&";
-                        kam = "spojeniekam=" + URLEncoder.encode(String.valueOf(sKam.getSelectedItem()), "utf-8") + "&";
-                        String kamZastavka = "z2k=z" + myMap.get(String.valueOf(sKam.getSelectedItem()));
-                        link = link + odkial + odkialZastavka + kam + kamZastavka;
+                        HashMap<String, Integer> myMap = new HashMap<String, Integer>();
+                        for (int i = 0; i < nazvyZastavok.length; i++) {
+                            myMap.put(nazvyZastavok[i], cislaZastavok[i]);
+                        }
 
-                    } catch (UnsupportedEncodingException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                        String link = "http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
+
+                        try {
+                            odkial = "spojenieodkial=" + URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8") + "&";
+                            String odkialZastavka = "z1k=z" + myMap.get(String.valueOf(sOdkial.getSelectedItem())) + "&";
+                            kam = "spojeniekam=" + URLEncoder.encode(String.valueOf(sKam.getSelectedItem()), "utf-8") + "&";
+                            String kamZastavka = "z2k=z" + myMap.get(String.valueOf(sKam.getSelectedItem()));
+                            link = link + odkial + odkialZastavka + kam + kamZastavka;
+
+                        } catch (UnsupportedEncodingException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
 
 
-                    if (URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem())).equals(URLEncoder.encode(String.valueOf(sKam.getSelectedItem())))) {
-                        Log.d("neeeegeeer", odkial);
+                        if (URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem())).equals(URLEncoder.encode(String.valueOf(sKam.getSelectedItem())))) {
+                            Log.d("neeeegeeer", odkial);
+
+                            Intent resultValue = new Intent();
+                            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+                            setResult(RESULT_CANCELED, resultValue);
+                            finish();
+                        }
+
+                        /**
+                         TextView zastavka1=(TextVie w) findViewById(R.id.zastavka_1);
+                         zastavka1.setText(String.valueOf(sOdkial.getSelectedItem()));
+
+                         TextView zastavka2=(TextView) findViewById(R.id.zastavka_2);
+                         zastavka2.setText(String.valueOf(sKam.getSelectedItem()));
+                         */
+
+                        Log.d("LINK", link);
+
+
+                        String prefsName = "mhd_prefs_" + String.valueOf(widgetId);
+
+
+                        MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
+                        MySharedPreferences.setPreferences("link", link);
+                        MySharedPreferences.setPreferences("zastavka1", String.valueOf(sOdkial.getSelectedItem()));
+                        MySharedPreferences.setPreferences("zastavka2", String.valueOf(sKam.getSelectedItem()));
+
+                        /**
+                         runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                        MhdWidgetProvider.parseImhd();
+                        }
+                        });
+                         */
+
+
+                        //bud posli intent pre Receiver alebo len zavolaj fciu
+                        Intent intent = new Intent();
+                        intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
+                        intent.putExtra("WIDGET_ID_MOJE", (int) widgetId);
+                        sendBroadcast(intent);
+
+                        Intent resultValue = new Intent();
+                        resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+                        setResult(RESULT_OK, resultValue);
+                        finish();
+
+                    } else {
 
                         Intent resultValue = new Intent();
                         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
                         setResult(RESULT_CANCELED, resultValue);
                         finish();
                     }
-
-                    /**
-                     TextView zastavka1=(TextVie w) findViewById(R.id.zastavka_1);
-                     zastavka1.setText(String.valueOf(sOdkial.getSelectedItem()));
-
-                     TextView zastavka2=(TextView) findViewById(R.id.zastavka_2);
-                     zastavka2.setText(String.valueOf(sKam.getSelectedItem()));
-                     */
-
-                    Log.d("LINK", link);
-
-
-                    String prefsName = "mhd_prefs_" + String.valueOf(widgetId);
-
-
-                    MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
-                    MySharedPreferences.setPreferences("link", link);
-                    MySharedPreferences.setPreferences("zastavka1", String.valueOf(sOdkial.getSelectedItem()));
-                    MySharedPreferences.setPreferences("zastavka2", String.valueOf(sKam.getSelectedItem()));
-
-                    /**
-                     runOnUiThread(new Runnable() {
-                    @Override public void run() {
-                    MhdWidgetProvider.parseImhd();
-                    }
-                    });
-                     */
-
-
-                    //bud posli intent pre Receiver alebo len zavolaj fciu
-                    Intent intent = new Intent();
-                    intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
-                    intent.putExtra("WIDGET_ID_MOJE", (int) widgetId);
-                    sendBroadcast(intent);
-
-                    Intent resultValue=new Intent();
-                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,widgetId);
-                    setResult(RESULT_OK,resultValue);
-                    finish();
-
-                }else {
-
-                    Intent resultValue = new Intent();
-                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
-                    setResult(RESULT_CANCELED, resultValue);
-                    finish();
                 }
 
             }
