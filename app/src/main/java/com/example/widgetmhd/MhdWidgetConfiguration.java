@@ -1,17 +1,22 @@
 package com.example.widgetmhd;
 
 import android.appwidget.AppWidgetManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -28,10 +33,12 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
 
     String odkial;
     String kam;
+    boolean isInternet=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_mhd_widget_configuration);
         setResult(RESULT_CANCELED);
 
@@ -47,6 +54,21 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
         //zavolat fciu nech nastavy spinery
         addItemsToSpinnerOdial();
 
+
+        //skontorluj internet
+        if (!isNetworkAvailable()){
+            isInternet=false;
+            TextView tv_internet=(TextView) findViewById(R.id.tv_internet);
+            tv_internet.setText("Zariadenie nemá prístup na internet!");
+
+            Button b_uloz = (Button) findViewById(R.id.uloz_config);
+            b_uloz.setText("Zrušiť");
+        }else{
+            isInternet=true;
+        }
+
+
+
         Button uloz= (Button) findViewById(R.id.uloz_config);
         uloz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,80 +76,85 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
                 //dostat zastavky zo spinerov
                 //ulozit do shared preferences
 
-                String[] nazvyZastavok = getResources().getStringArray(R.array.zastavkyNazvy);
-                int[] cislaZastavok = getResources().getIntArray(R.array.nazvyCisla);
+                if (isInternet) {
+                    String[] nazvyZastavok = getResources().getStringArray(R.array.zastavkyNazvy);
+                    int[] cislaZastavok = getResources().getIntArray(R.array.nazvyCisla);
 
-                HashMap<String, Integer> myMap = new HashMap<String, Integer>();
-                for (int i = 0; i < nazvyZastavok.length; i++) {
-                    myMap.put(nazvyZastavok[i], cislaZastavok[i]);
-                }
+                    HashMap<String, Integer> myMap = new HashMap<String, Integer>();
+                    for (int i = 0; i < nazvyZastavok.length; i++) {
+                        myMap.put(nazvyZastavok[i], cislaZastavok[i]);
+                    }
 
-                String link="http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
+                    String link = "http://imhd.zoznam.sk/ke/planovac-cesty-vyhladanie-spojenia.html?";
 
-                try {
-                    odkial = "spojenieodkial="+ URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8")+"&";
-                    String odkialZastavka="z1k=z"+ myMap.get(String.valueOf(sOdkial.getSelectedItem())) +"&";
-                    kam="spojeniekam="+URLEncoder.encode( String.valueOf(sKam.getSelectedItem()) ,"utf-8")+"&";
-                    String kamZastavka="z2k=z"+myMap.get(String.valueOf(sKam.getSelectedItem()));
-                    link=link+odkial+odkialZastavka+kam+kamZastavka;
+                    try {
+                        odkial = "spojenieodkial=" + URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem()), "utf-8") + "&";
+                        String odkialZastavka = "z1k=z" + myMap.get(String.valueOf(sOdkial.getSelectedItem())) + "&";
+                        kam = "spojeniekam=" + URLEncoder.encode(String.valueOf(sKam.getSelectedItem()), "utf-8") + "&";
+                        String kamZastavka = "z2k=z" + myMap.get(String.valueOf(sKam.getSelectedItem()));
+                        link = link + odkial + odkialZastavka + kam + kamZastavka;
 
-                } catch (UnsupportedEncodingException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                    } catch (UnsupportedEncodingException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 
 
-                if (URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem())).equals(URLEncoder.encode( String.valueOf(sKam.getSelectedItem())))){
-                    Log.d("neeeegeeer",odkial);
+                    if (URLEncoder.encode(String.valueOf(sOdkial.getSelectedItem())).equals(URLEncoder.encode(String.valueOf(sKam.getSelectedItem())))) {
+                        Log.d("neeeegeeer", odkial);
+
+                        Intent resultValue = new Intent();
+                        resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+                        setResult(RESULT_CANCELED, resultValue);
+                        finish();
+                    }
+
+                    /**
+                     TextView zastavka1=(TextVie w) findViewById(R.id.zastavka_1);
+                     zastavka1.setText(String.valueOf(sOdkial.getSelectedItem()));
+
+                     TextView zastavka2=(TextView) findViewById(R.id.zastavka_2);
+                     zastavka2.setText(String.valueOf(sKam.getSelectedItem()));
+                     */
+
+                    Log.d("LINK", link);
+
+
+                    String prefsName = "mhd_prefs_" + String.valueOf(widgetId);
+
+
+                    MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
+                    MySharedPreferences.setPreferences("link", link);
+                    MySharedPreferences.setPreferences("zastavka1", String.valueOf(sOdkial.getSelectedItem()));
+                    MySharedPreferences.setPreferences("zastavka2", String.valueOf(sKam.getSelectedItem()));
+
+                    /**
+                     runOnUiThread(new Runnable() {
+                    @Override public void run() {
+                    MhdWidgetProvider.parseImhd();
+                    }
+                    });
+                     */
+
+
+                    //bud posli intent pre Receiver alebo len zavolaj fciu
+                    Intent intent = new Intent();
+                    intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
+                    intent.putExtra("WIDGET_ID_MOJE", (int) widgetId);
+                    sendBroadcast(intent);
 
                     Intent resultValue=new Intent();
                     resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,widgetId);
-                    setResult(RESULT_CANCELED,resultValue);
+                    setResult(RESULT_OK,resultValue);
+                    finish();
+
+                }else {
+
+                    Intent resultValue = new Intent();
+                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+                    setResult(RESULT_CANCELED, resultValue);
                     finish();
                 }
-
-                /**
-                TextView zastavka1=(TextVie w) findViewById(R.id.zastavka_1);
-                zastavka1.setText(String.valueOf(sOdkial.getSelectedItem()));
-
-                TextView zastavka2=(TextView) findViewById(R.id.zastavka_2);
-                zastavka2.setText(String.valueOf(sKam.getSelectedItem()));
-                */
-
-                Log.d("LINK",link);
-
-
-                String prefsName="mhd_prefs_"+String.valueOf(widgetId);
-
-
-
-                MySharedPreferences.initSharedPreferences(getSharedPreferences(prefsName, MODE_PRIVATE), getApplicationContext());
-                MySharedPreferences.setPreferences("link",link);
-                MySharedPreferences.setPreferences("zastavka1",String.valueOf(sOdkial.getSelectedItem()));
-                MySharedPreferences.setPreferences("zastavka2",String.valueOf(sKam.getSelectedItem()));
-
-                /**
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MhdWidgetProvider.parseImhd();
-                    }
-                });
-                */
-
-
-
-
-                //bud posli intent pre Receiver alebo len zavolaj fciu
-                Intent intent = new Intent();
-                intent.setAction("android.appwidget.action.APPWIDGET_UPDATEE");
-                intent.putExtra("WIDGET_ID_MOJE",(int)widgetId);
-                sendBroadcast(intent);
-
-                Intent resultValue=new Intent();
-                resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,widgetId);
-                setResult(RESULT_OK,resultValue);
-                finish();
 
             }
         });
@@ -135,6 +162,12 @@ public class MhdWidgetConfiguration extends ActionBarActivity {
 
     }
 
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager  = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 
     public void addItemsToSpinnerOdial(){
